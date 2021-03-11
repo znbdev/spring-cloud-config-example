@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 // This will allow us to reinitialize this controller to get any new config
 // values when the /refresh endpoint is POSTed to.
 @RefreshScope
-public class AppController {
+public class ClientController {
 
     @Value("${info.foo}")
     private String fooProperty;
