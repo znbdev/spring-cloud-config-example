@@ -1,0 +1,21 @@
+# Config data exposed by config server
+spring:
+  profiles:
+    active:
+      - dev
+---
+spring:
+  profiles: dev
+  application:
+    name: spring-cloud-config-example-dev
+info:
+  foo: bar-dev
+  someList: [1, 3, 5]
+---
+spring:
+  profiles: test
+  application:
+    name: spring-cloud-config-example-test
+info:
+  foo: bar-test
+  someList: [2, 4, 6]

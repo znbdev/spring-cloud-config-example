@@ -1,0 +1,69 @@
+# Config data exposed by config server
+spring:
+  profiles:
+    active:
+      - dev
+---
+server:
+  port: 8088
+spring:
+  profiles: dev
+  application:
+    name: config-client-dev
+  #--------------------------------------------------
+  # DATA SOURCE
+  #--------------------------------------------------
+  datasource:
+#    url: jdbc:mysql://localhost:3306/test_schema?autoReconnect=true&useSSL=false&characterEncoding=utf8
+    url: jdbc:mysql://127.0.0.1:3306/test_schema?autoReconnect=true&useSSL=false&characterEncoding=utf8
+    # 数据库账号密码
+    username: test
+    password: cExpm4/t5rvltSVKGbXyKQ/VzHxOrDUGgRfl8t8+Pq/GbcbtSA4UMS7xIRzCf9wrS9c2a17OLcP/mOy/sHx3dg==
+    # 驱动
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    # 初期化
+    initialization-mode: never
+    publicKey: MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAIC2vdITrOhzNzKnPsfZLLyNJ3uZ8k4t+i5jf08PfumvyR5wcHstWP1VaJiHW+gmmCsogKXkrmLivLhaYNkO1jMCAwEAAQ==
+    # Druid
+    druid:
+      initial-size: 5
+      max-active: 20
+      min-idle: 5
+      max-wait: 10
+      validationQuery: SELECT 1
+      filter:
+        config:
+          enabled: true
+      connection-properties: config.decrypt=true;config.decrypt.key=${spring.datasource.publicKey}
+---
+server:
+  port: 8088
+spring:
+  profiles: test
+  application:
+    name: config-client-test
+  #--------------------------------------------------
+  # DATA SOURCE
+  #--------------------------------------------------
+  datasource:
+#    url: jdbc:mysql://localhost:3306/test_schema?autoReconnect=true&useSSL=false&characterEncoding=utf8
+    url: jdbc:mysql://127.0.0.1:3306/test_schema?autoReconnect=true&useSSL=false&characterEncoding=utf8
+    # 数据库账号密码
+    username: test
+    password: cExpm4/t5rvltSVKGbXyKQ/VzHxOrDUGgRfl8t8+Pq/GbcbtSA4UMS7xIRzCf9wrS9c2a17OLcP/mOy/sHx3dg==
+    # 驱动
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    # 初期化
+    initialization-mode: never
+    publicKey: MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAIC2vdITrOhzNzKnPsfZLLyNJ3uZ8k4t+i5jf08PfumvyR5wcHstWP1VaJiHW+gmmCsogKXkrmLivLhaYNkO1jMCAwEAAQ==
+    # Druid
+    druid:
+      initial-size: 5
+      max-active: 20
+      min-idle: 5
+      max-wait: 10
+      validationQuery: SELECT 1
+      filter:
+        config:
+          enabled: true
+      connection-properties: config.decrypt=true;config.decrypt.key=${spring.datasource.publicKey}

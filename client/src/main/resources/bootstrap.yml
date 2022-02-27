@@ -1,0 +1,15 @@
+spring:
+  cloud:
+    config:
+      name: example-cloud-config-client
+      profile: test
+      label: master # optional
+      uri: http://localhost:8888 # optional
+management:
+  endpoints:
+    web:
+      exposure:
+        # config serverから読み込んだconfigの確認のためにenvを利用
+        # configの再読み込みのためにrefreshも有効化
+        include: "env,refresh"
+      base-path: "/"
